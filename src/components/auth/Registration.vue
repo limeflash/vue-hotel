@@ -2,7 +2,7 @@
   <div>
     <h1>{{ $route.name }} page</h1>
 
-    <v-form ref="form" v-model="valid" lazy-validation>
+    <v-form ref="form" lazy-validation>
       <v-text-field
         v-model="email"
         id="email"
@@ -45,8 +45,14 @@
         counter
         reaquired
       ></v-text-field>
-      <v-checkbox id="checkbox" v-model="checkbox" label="Do you agree?" required></v-checkbox>
-      <v-btn block :disabled="$v.$invalid" color="success" @click="onSubmit">Submit</v-btn>
+      <v-checkbox id="checkbox" label="Do you agree?" required></v-checkbox>
+      <v-btn
+        block
+        :disabled="$v.$invalid || loading"
+        :loading="loading"
+        color="success"
+        @click="onSubmit"
+      >Create account</v-btn>
     </v-form>
   </div>
 </template>
@@ -70,11 +76,19 @@ export default {
         email: this.email,
         password: this.password
       }
-      this.$store.dispatch("registerUser", user)
+      this.$store
+        .dispatch("registerUser", user)
+        .then(() => {
+          this.$router.push("/")
+        })
+        .catch(() => {})
       // console.log("Pass2", this.passwordRepeat)
     }
   },
   computed: {
+    loading() {
+      return this.$store.getters.loading
+    },
     emailErrors() {
       const errors = []
       if (!this.$v.email.$dirty) return errors

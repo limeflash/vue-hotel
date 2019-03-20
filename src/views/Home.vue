@@ -1,5 +1,5 @@
 <template>
-  <div :title="title" class="home">
+  <div :title="title1" class="home">
     <h1>{{ headText + " " + title1 }}</h1>
     <home-card></home-card>
   </div>

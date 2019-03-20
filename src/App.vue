@@ -11,16 +11,38 @@
       </v-layout>
     </v-parallax>
     <nav-bar :title="title1"></nav-bar>
-    <v-container fluid>
+    <v-content fluid>
       <router-view></router-view>
-    </v-container>
+    </v-content>
+    <template v-if="error">
+      <v-snackbar
+        color="error"
+        :multi-line="true"
+        :timeout="3000"
+        @input="closeError"
+        :value="true"
+      >
+        {{ error }}
+        <v-btn dark flat @click.native="closeError">Close</v-btn>
+      </v-snackbar>
+    </template>
     <footer-side></footer-side>
   </v-app>
 </template>
 <script>
 import Misc from "@/mixins/Misc.js"
 export default {
-  mixins: [Misc]
+  mixins: [Misc],
+  methods: {
+    closeError() {
+      return this.$store.dispatch("clearError")
+    }
+  },
+  computed: {
+    error() {
+      return this.$store.getters.error
+    }
+  }
 }
 </script>
 <style>

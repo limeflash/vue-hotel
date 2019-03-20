@@ -3,9 +3,21 @@ import Router from "vue-router"
 import Home from "@/views/Home.vue"
 import Nfound from "@/views/404.vue"
 import Contact from "@/views/Contact.vue"
-import Login from "./components/Login.vue"
-import Registration from "./components/Registration.vue"
+// import Login from "./components/Login.vue"
+// import Registration from "./components/Registration.vue"
 Vue.use(Router)
+
+const Login = resolve => {
+  require.ensure(["./components/Login.vue"], () => {
+    resolve(require("./components/Login.vue"))
+  })
+}
+
+const Registration = resolve => {
+  require.ensure(["./components/Registration.vue"], () => {
+    resolve(require("./components/Registration.vue"))
+  })
+}
 
 export default new Router({
   mode: "history",

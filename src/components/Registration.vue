@@ -46,7 +46,7 @@
         reaquired
       ></v-text-field>
       <v-checkbox id="checkbox" v-model="checkbox" label="Do you agree?" required></v-checkbox>
-      <v-btn :disabled="$v.$invalid" color="success" @click="onSubmit">Submit</v-btn>
+      <v-btn block :disabled="$v.$invalid" color="success" @click="onSubmit">Submit</v-btn>
     </v-form>
   </div>
 </template>

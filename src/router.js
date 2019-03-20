@@ -3,6 +3,7 @@ import Router from "vue-router"
 import Home from "@/views/Home.vue"
 import Nfound from "@/views/404.vue"
 import Contact from "@/views/Contact.vue"
+import Login from "./components/Login.vue"
 
 Vue.use(Router)
 
@@ -28,6 +29,11 @@ export default new Router({
       path: "/contact-us",
       name: "Contact",
       component: Contact
+    },
+    {
+      path: "/login",
+      name: "Login",
+      component: Login
     },
     {
       path: "*",

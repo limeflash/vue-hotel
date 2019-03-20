@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <v-app>
     <v-parallax
       height="300"
       alt="parallax_cover"
@@ -10,11 +10,12 @@
         <h4 class="title">{{ subTitle1 }}</h4>
       </v-layout>
     </v-parallax>
-    <div id="nav">
-      <nav-bar :title="title1"></nav-bar>
-    </div>
-    <router-view />
-  </div>
+    <nav-bar :title="title1"></nav-bar>
+    <v-container fluid>
+      <router-view></router-view>
+    </v-container>
+    <footer-side></footer-side>
+  </v-app>
 </template>
 <script>
 import Misc from "@/mixins/Misc.js"

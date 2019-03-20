@@ -4,18 +4,22 @@ import camelCase from "lodash/camelCase"
 import App from "@/App.vue"
 import router from "@/router"
 import store from "@/store"
+import Vuelidate from "vuelidate"
 import Vuetify from "vuetify"
 import NavBar from "@/components/Navbar.vue"
 import HomeCard from "@/components/Homecard.vue"
+import FooterSide from "@/components/Footer.vue"
 import "vuetify/dist/vuetify.min.css" // Ensure you are using css-loader
 export const eventBus = new Vue()
 Vue.config.productionTip = false
 
 Vue.use(Vuetify)
+Vue.use(Vuelidate)
 Vue.use(eventBus)
 
 Vue.component("NavBar", NavBar)
 Vue.component("HomeCard", HomeCard)
+Vue.component("FooterSide", FooterSide)
 
 const requireComponent = require.context(
   // The relative path of the components folder

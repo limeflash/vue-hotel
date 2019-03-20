@@ -1,27 +1,14 @@
 <template>
   <div class="404">
     <h1>Please do not enter this error page! It make you error!</h1>
-    <router-link to="/">Go back to home</router-link>
-    <div id="errBlock"></div>
-    {{ evilFun() }}
+    <v-btn block class="white--text" :color="colorGreen" to="/">GO HOME</v-btn>
   </div>
 </template>
 
 <script>
+import Colors from "@/mixins/Colors.js"
 export default {
-  data() {
-    return {
-      image: "'/public/download.jpeg'"
-    }
-  },
-  methods: {
-    evilFun: () => {
-      for (let i = 0; i < 1000; i++) {
-        var eField = document.getElementById("errBlock").createELement("div")
-        return eField
-      }
-    }
-  }
+  mixins: [Colors]
 }
 </script>
 <style scoped>

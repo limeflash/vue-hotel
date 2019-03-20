@@ -45,13 +45,8 @@
         counter
         reaquired
       ></v-text-field>
-      <v-checkbox v-model="checkbox" label="Do you agree?" required></v-checkbox>
-
-      <v-btn :disabled="!valid" color="success" @click="validate">Validate</v-btn>
-
-      <v-btn color="error" @click="reset">Reset Form</v-btn>
-
-      <v-btn color="warning" @click="resetValidation">Reset Validation</v-btn>
+      <v-checkbox id="checkbox" v-model="checkbox" label="Do you agree?" required></v-checkbox>
+      <v-btn :disabled="$v.$invalid" color="success" @click="onSubmit">Submit</v-btn>
     </v-form>
   </div>
 </template>
@@ -67,6 +62,13 @@ export default {
       email: "",
       password: "",
       passwordRepeat: ""
+    }
+  },
+  methods: {
+    onSubmit() {
+      console.log("Email", this.email)
+      console.log("Pass", this.password)
+      console.log("Pass2", this.passwordRepeat)
     }
   },
   computed: {
@@ -105,6 +107,9 @@ export default {
     },
     passwordRepeat: {
       sameAsPassword: sameAs("password"),
+      required
+    },
+    checkbox: {
       required
     }
   }

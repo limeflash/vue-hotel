@@ -8,14 +8,14 @@ import Contact from "@/views/Contact.vue"
 Vue.use(Router)
 
 const Login = resolve => {
-  require.ensure(["./components/Login.vue"], () => {
-    resolve(require("./components/Login.vue"))
+  require.ensure(["./components/auth/Login.vue"], () => {
+    resolve(require("./components/auth/Login.vue"))
   })
 }
 
 const Registration = resolve => {
-  require.ensure(["./components/Registration.vue"], () => {
-    resolve(require("./components/Registration.vue"))
+  require.ensure(["./components/auth/Registration.vue"], () => {
+    resolve(require("./components/auth/Registration.vue"))
   })
 }
 

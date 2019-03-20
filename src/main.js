@@ -10,6 +10,8 @@ import camelCase from "lodash/camelCase"
 import Vuetify from "vuetify"
 import "vuetify/dist/vuetify.min.css" // Ensure you are using css-loader
 
+import * as fb from "firebase"
+
 import NavBar from "@/components/Navbar.vue"
 import HomeCard from "@/components/Homecard.vue"
 import FooterSide from "@/components/Footer.vue"
@@ -62,5 +64,14 @@ requireComponent.keys().forEach(fileName => {
 new Vue({
   router,
   store,
+  created() {
+    fb.initializeApp({
+      apiKey: "AIzaSyCj7_zW6zcLhXGPkr3H2XWF_a1oo6oqNO0",
+      authDomain: "vuejs-kurs1.firebaseapp.com",
+      databaseURL: "https://vuejs-kurs1.firebaseio.com",
+      projectId: "vuejs-kurs1",
+      storageBucket: "vuejs-kurs1.appspot.com"
+    })
+  },
   render: h => h(App)
 }).$mount("#app")

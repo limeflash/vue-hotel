@@ -66,9 +66,12 @@ export default {
   },
   methods: {
     onSubmit() {
-      console.log("Email", this.email)
-      console.log("Pass", this.password)
-      console.log("Pass2", this.passwordRepeat)
+      const user = {
+        email: this.email,
+        password: this.password
+      }
+      this.$store.dispatch("registerUser", user)
+      // console.log("Pass2", this.passwordRepeat)
     }
   },
   computed: {
@@ -107,9 +110,6 @@ export default {
     },
     passwordRepeat: {
       sameAsPassword: sameAs("password"),
-      required
-    },
-    checkbox: {
       required
     }
   }

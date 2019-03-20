@@ -10,7 +10,7 @@
         label="E-mail"
         @input="$v.email.$touch()"
         @blur="$v.email.$touch()"
-        :error-messages="emailErrors"r
+        :error-messages="emailErrors"
         required
       ></v-text-field>
       <v-text-field

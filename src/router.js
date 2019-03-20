@@ -4,7 +4,7 @@ import Home from "@/views/Home.vue"
 import Nfound from "@/views/404.vue"
 import Contact from "@/views/Contact.vue"
 import Login from "./components/Login.vue"
-
+import Registration from "./components/Registration.vue"
 Vue.use(Router)
 
 export default new Router({
@@ -34,6 +34,11 @@ export default new Router({
       path: "/login",
       name: "Login",
       component: Login
+    },
+    {
+      path: "/registration",
+      name: "Registration",
+      component: Registration
     },
     {
       path: "*",

@@ -10,7 +10,7 @@
         label="E-mail"
         @input="$v.email.$touch()"
         @blur="$v.email.$touch()"
-        :error-messages="emailErrors"r
+        :error-messages="emailErrors"
         required
       ></v-text-field>
       <v-text-field
@@ -29,6 +29,22 @@
         counter
         reaquired
       ></v-text-field>
+      <v-text-field
+        v-model="passwordRepeat"
+        id="passwordRepeat"
+        class="form-control"
+        :append-icon="show2 ? 'visibility' : 'visibility_off'"
+        :type="show2 ? 'text' : 'password'"
+        name="input-10-1"
+        label="Password Repeat"
+        hint="Must be same"
+        @click:append="show2 = !show2"
+        @input="$v.passwordRepeat.$touch()"
+        @blur="$v.passwordRepeat.$touch()"
+        :error-messages="passwordRepeatErrors"
+        counter
+        reaquired
+      ></v-text-field>
       <v-checkbox v-model="checkbox" label="Do you agree?" required></v-checkbox>
 
       <v-btn :disabled="!valid" color="success" @click="validate">Validate</v-btn>
@@ -41,15 +57,16 @@
 </template>
 <script>
 // @ is an alias to /src
-import { required, minLength, email } from "vuelidate/lib/validators"
+import { required, minLength, email, sameAs } from "vuelidate/lib/validators"
 export default {
-  name: "Login",
+  name: "Registration",
   data() {
     return {
       show1: false,
       show2: false,
       email: "",
-      password: ""
+      password: "",
+      passwordRepeat: ""
     }
   },
   computed: {
@@ -66,6 +83,14 @@ export default {
       !this.$v.password.required && errors.push("Password is required")
       !this.$v.password.minLength && errors.push("Must be at least 8")
       return errors
+    },
+    passwordRepeatErrors() {
+      const errors = []
+      if (!this.$v.passwordRepeat.$dirty) return errors
+      !this.$v.passwordRepeat.required &&
+        errors.push("Password repeat is required")
+      !this.$v.passwordRepeat.sameAsPassword && errors.push("Must be the same")
+      return errors
     }
   },
   validations: {
@@ -77,6 +102,10 @@ export default {
     password: {
       required,
       minLength: minLength(8)
+    },
+    passwordRepeat: {
+      sameAsPassword: sameAs("password"),
+      required
     }
   }
 }

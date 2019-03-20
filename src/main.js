@@ -1,15 +1,19 @@
 import Vue from "vue"
-import upperFirst from "lodash/upperFirst"
-import camelCase from "lodash/camelCase"
 import App from "@/App.vue"
 import router from "@/router"
 import store from "@/store"
 import Vuelidate from "vuelidate"
+
+import upperFirst from "lodash/upperFirst"
+import camelCase from "lodash/camelCase"
+
 import Vuetify from "vuetify"
+import "vuetify/dist/vuetify.min.css" // Ensure you are using css-loader
+
 import NavBar from "@/components/Navbar.vue"
 import HomeCard from "@/components/Homecard.vue"
 import FooterSide from "@/components/Footer.vue"
-import "vuetify/dist/vuetify.min.css" // Ensure you are using css-loader
+
 export const eventBus = new Vue()
 Vue.config.productionTip = false
 

@@ -17,7 +17,11 @@
         <v-btn :color="colorWhite" flat :to="{ name: 'Contact' }">Contact-us</v-btn>
       </v-toolbar-items>
       <div class="auth">
-        <v-btn to="#" :color="colorLightGreen" class="subheading font-weight-bold">Registration</v-btn>
+        <v-btn
+          :to="{ name: 'Registration' }"
+          :color="colorLightGreen"
+          class="subheading font-weight-bold"
+        >Registration</v-btn>
         <v-btn
           :to="{ name: 'Login' }"
           :color="colorLightGreen"

@@ -16,7 +16,7 @@
         <v-btn :color="colorWhite" flat :to="{ name: 'About' }">About</v-btn>
         <v-btn :color="colorWhite" flat :to="{ name: 'Contact' }">Contact-us</v-btn>
       </v-toolbar-items>
-      <div class="auth">
+      <div class="auth" v-if="!this.$store.getters.isUserLoggedIn">
         <v-btn
           :to="{ name: 'Registration' }"
           :color="colorLightGreen"
@@ -28,6 +28,14 @@
           class="subheading font-weight-bold"
         >Login</v-btn>
       </div>
+      <div class="auth" v-if="this.$store.getters.isUserLoggedIn">
+        <v-btn @click="onLogout()" :color="colorLightGreen" class="subheading font-weight-bold">
+          <v-flex>
+            Log-out
+            <i class="fas fa-sign-out-alt"></i>
+          </v-flex>
+        </v-btn>
+      </div>
     </v-toolbar>
   </div>
 </template>
@@ -35,7 +43,13 @@
 import Colors from "@/mixins/Colors.js"
 export default {
   mixins: [Colors],
-  props: ["title"]
+  props: ["title"],
+  methods: {
+    onLogout() {
+      this.$store.dispatch("logoutUser")
+      this.$router.push("/")
+    }
+  }
 }
 </script>
 <style scoped>

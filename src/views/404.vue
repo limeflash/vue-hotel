@@ -17,7 +17,7 @@
 <script>
 import Colors from "@/mixins/Colors.js"
 export default {
-  name: "404",
+  name: "fof",
   mixins: [Colors]
 }
 </script>

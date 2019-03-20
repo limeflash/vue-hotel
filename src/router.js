@@ -54,7 +54,7 @@ export default new Router({
     },
     {
       path: "*",
-      name: "404",
+      name: "fof",
       component: Nfound
     }
   ]

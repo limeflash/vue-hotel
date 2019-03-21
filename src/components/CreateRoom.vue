@@ -3,8 +3,23 @@
     <v-layout row>
       <v-flex xs12 sm6 offset-sm3>
         <h1>{{ $route.name }} page</h1>'
-        <v-form v-if="$store.getters.isUserLoggedIn">
-          <v-text-field v-model="title" id="title" label="title" type="text" reaquired></v-text-field>
+        <h2
+          v-if="$store.getters.isUserLoggedIn && $store.getters.user.id == 'FWOzZPgZnAfFQEwEfqeR0rQHQmV2'"
+        >Admin</h2>
+        <h2>User uid = {{$store.getters.user.id}}</h2>
+        <v-form
+          mb-3
+          v-if="$store.getters.isUserLoggedIn && $store.getters.user.id == 'FWOzZPgZnAfFQEwEfqeR0rQHQmV2'"
+        >
+          <v-text-field v-model="title" id="title" label="Title" type="text" reaquired></v-text-field>
+          <v-textarea
+            v-model="description"
+            id="description"
+            label="Description"
+            type="text"
+            reaquired
+          ></v-textarea>
+          <v-text-field v-model="data" id="data" label="Date" type="date" reaquired></v-text-field>
           <v-btn @click="clickone" color="success">Submit data</v-btn>
         </v-form>
       </v-flex>
@@ -20,9 +35,9 @@ export default {
   name: "CreateRoom",
   data() {
     return {
-        title: "",
-        description: "",
-        data: 2019
+      title: "",
+      description: "",
+      data: new Date().toISOString().slice(0, 10)
     }
   },
   methods: {

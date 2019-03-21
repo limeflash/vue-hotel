@@ -1,12 +1,18 @@
 <template>
-  <div class="about">
-    <h1>This is an {{ $route.name }} page</h1>
-  </div>
+  <v-container>
+    <v-layout row>
+      <v-flex xs12 sm6 offset-sm3>
+        <h1>{{ $route.name }} page</h1>
+      </v-flex>
+    </v-layout>
+  </v-container>
 </template>
 
 <script>
 // @ is an alias to /src
+import Text from "@/mixins/Text.js"
 export default {
-  name: "home"
+  name: "About",
+  mixins: [Text]
 }
 </script>

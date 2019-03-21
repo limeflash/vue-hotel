@@ -19,6 +19,12 @@ const Registration = resolve => {
   })
 }
 
+const CreateRoom = resolve => {
+  require.ensure(["./components/CreateRoom.vue"], () => {
+    resolve(require("./components/CreateRoom.vue"))
+  })
+}
+
 export default new Router({
   mode: "history",
   base: process.env.BASE_URL,
@@ -36,6 +42,11 @@ export default new Router({
       // which is lazy-loaded when the route is visited.
       component: () =>
         import(/* webpackChunkName: "about" */ "@/views/About.vue")
+    },
+    {
+      path: "/create",
+      name: "CreateRoom",
+      component: CreateRoom
     },
     {
       path: "/contact-us",

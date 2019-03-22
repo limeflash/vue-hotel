@@ -7,6 +7,7 @@ export default {
         title: "sasasa",
         description: "ddadadada",
         data: new Date().toISOString().slice(0, 10),
+        id: Math.round(Math.random() * 10000 + 40),
       },
       {
         imageSrc:
@@ -14,6 +15,7 @@ export default {
         title: "sasasa",
         description: "ddadadada",
         data: new Date().toISOString().slice(0, 10),
+        id: Math.round(Math.random() * 10000 + 20),
       },
       {
         imageSrc:
@@ -21,6 +23,7 @@ export default {
         title: "sasasa",
         description: "ddadadada",
         data: new Date().toISOString().slice(0, 10),
+        id: Math.round(Math.random() * 10000 + 10),
       },
     ],
   },
@@ -29,21 +32,12 @@ export default {
       state.articles.push(payload)
     },
   },
-  actions: {
-    createArticle({ commit }, payload) {
-      payload.id = "sasasasa"
-
-      commit("createArticle", payload)
-    },
-  },
+  actions: {},
   getters: {
     articles(state) {
       return state.articles
     },
-    myAds(state) {
-      return state.articles
-    },
-    adById(state) {
+    articlesById(state) {
       return articleId => {
         return state.articles.find(article => article.id === articleId)
       }

@@ -18,7 +18,7 @@
           <v-card-actions>
             <v-flex>
               <v-layout>
-                <v-btn @click="getDataOne">Open</v-btn>
+                <v-btn :to="'/home/' + article.id">Open</v-btn>
                 <v-btn :disabled="!$store.getters.isUserLoggedIn" block class="primary">Order</v-btn>
               </v-layout>
             </v-flex>
@@ -36,10 +36,11 @@ import Misc from "@/mixins/Misc.js"
 export default {
   props: ["id"],
   mixins: [Misc],
-  data() {
-    return {}
+  computed: {
+    articles() {
+      return this.$store.getters.articles
+    },
   },
-  methods: {},
 }
 </script>
 

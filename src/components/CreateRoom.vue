@@ -29,8 +29,8 @@
 
 <script>
 // @ is an alias to /src
-import * as fb from "firebase"
-var db = fb.firestore()
+// import * as fb from "firebase"
+// var db = fb.firestore()
 export default {
   name: "CreateRoom",
   data() {
@@ -42,18 +42,25 @@ export default {
   },
   methods: {
     clickone() {
-      db.collection("article")
-        .add({
-          title: this.title,
-          description: this.description,
-          data: this.data,
-        })
-        .then(function(docRef) {
-          console.log("Document written with ID: ", docRef.id)
-        })
-        .catch(function(error) {
-          console.error("Error adding document: ", error)
-        })
+      const article = {
+        title: this.title,
+        description: this.description,
+        data: this.data,
+        id: Math.round(Math.random() * 10000),
+      }
+      this.$store.dispatch("createArticle", article)
+      //   db.collection("article")
+      //     .add({
+      //       title: this.title,
+      //       description: this.description,
+      //       data: this.data,
+      //     })
+      //     .then(function(docRef) {
+      //       console.log("Document written with ID: ", docRef.id)
+      //     })
+      //     .catch(function(error) {
+      //       console.error("Error adding document: ", error)
+      //     })
     },
   },
 }

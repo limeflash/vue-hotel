@@ -38,6 +38,7 @@ export default new Router({
     {
       path: "/article/:id",
       name: "article",
+      props: true,
       component: Article,
     },
     {

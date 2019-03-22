@@ -58,32 +58,32 @@
 </template>
 <script>
 // @ is an alias to /src
-import { required, minLength, email, sameAs } from "vuelidate/lib/validators"
+import { required, minLength, email, sameAs } from 'vuelidate/lib/validators'
 export default {
-  name: "Registration",
+  name: 'Registration',
   data() {
     return {
       show1: false,
       show2: false,
-      email: "",
-      password: "",
-      passwordRepeat: ""
+      email: '',
+      password: '',
+      passwordRepeat: '',
     }
   },
   methods: {
     onSubmit() {
       const user = {
         email: this.email,
-        password: this.password
+        password: this.password,
       }
       this.$store
-        .dispatch("registerUser", user)
+        .dispatch('registerUser', user)
         .then(() => {
-          this.$router.push("/login")
+          this.$router.push('/login')
         })
         .catch(() => {})
       // console.log("Pass2", this.passwordRepeat)
-    }
+    },
   },
   computed: {
     loading() {
@@ -92,40 +92,40 @@ export default {
     emailErrors() {
       const errors = []
       if (!this.$v.email.$dirty) return errors
-      !this.$v.email.email && errors.push("Must be valid e-mail")
-      !this.$v.email.required && errors.push("E-mail is required")
+      !this.$v.email.email && errors.push('Must be valid e-mail')
+      !this.$v.email.required && errors.push('E-mail is required')
       return errors
     },
     passwordErrors() {
       const errors = []
       if (!this.$v.password.$dirty) return errors
-      !this.$v.password.required && errors.push("Password is required")
-      !this.$v.password.minLength && errors.push("Must be at least 8")
+      !this.$v.password.required && errors.push('Password is required')
+      !this.$v.password.minLength && errors.push('Must be at least 8')
       return errors
     },
     passwordRepeatErrors() {
       const errors = []
       if (!this.$v.passwordRepeat.$dirty) return errors
       !this.$v.passwordRepeat.required &&
-        errors.push("Password repeat is required")
-      !this.$v.passwordRepeat.sameAsPassword && errors.push("Must be the same")
+        errors.push('Password repeat is required')
+      !this.$v.passwordRepeat.sameAsPassword && errors.push('Must be the same')
       return errors
-    }
+    },
   },
   validations: {
     email: {
       required,
       minLength: minLength(4),
-      email
+      email,
     },
     password: {
       required,
-      minLength: minLength(8)
+      minLength: minLength(8),
     },
     passwordRepeat: {
-      sameAsPassword: sameAs("password"),
-      required
-    }
-  }
+      sameAsPassword: sameAs('password'),
+      required,
+    },
+  },
 }
 </script>

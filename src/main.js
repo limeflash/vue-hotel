@@ -70,13 +70,15 @@ new Vue({
       authDomain: "vuejs-kurs1.firebaseapp.com",
       databaseURL: "https://vuejs-kurs1.firebaseio.com",
       projectId: "vuejs-kurs1",
-      storageBucket: "vuejs-kurs1.appspot.com"
+      storageBucket: "vuejs-kurs1.appspot.com",
     }),
       fb.auth().onAuthStateChanged(user => {
         if (user) {
           this.$store.dispatch("autoLoginUser", user)
         }
       })
+
+    this.$store.dispatch("fetchArticles")
   },
-  render: h => h(App)
+  render: h => h(App),
 }).$mount("#app")

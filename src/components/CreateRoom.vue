@@ -37,7 +37,7 @@ export default {
     return {
       title: "",
       description: "",
-      data: new Date().toISOString().slice(0, 10)
+      data: new Date().toISOString().slice(0, 10),
     }
   },
   methods: {
@@ -46,7 +46,7 @@ export default {
         .add({
           title: this.title,
           description: this.description,
-          data: this.data
+          data: this.data,
         })
         .then(function(docRef) {
           console.log("Document written with ID: ", docRef.id)
@@ -54,7 +54,7 @@ export default {
         .catch(function(error) {
           console.error("Error adding document: ", error)
         })
-    }
-  }
+    },
+  },
 }
 </script>

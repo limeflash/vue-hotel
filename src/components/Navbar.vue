@@ -16,11 +16,17 @@
         <v-btn :color="colorWhite" flat :to="{ name: 'About' }">About</v-btn>
         <v-btn :color="colorWhite" flat :to="{ name: 'Contact' }">Contact-us</v-btn>
         <v-btn
-          v-if="$store.getters.isUserLoggedIn && $store.getters.user.id == 'FWOzZPgZnAfFQEwEfqeR0rQHQmV2'"
+          v-if="$store.getters.isUserLoggedIn"
           :color="colorWhite"
           flat
           :to="{ name: 'CreateRoom' }"
         >Create form</v-btn>
+        <v-btn
+          v-if="$store.getters.isUserLoggedIn"
+          :color="colorWhite"
+          flat
+          :to="{ name: 'MyArticles' }"
+        >My Orders</v-btn>
       </v-toolbar-items>
       <div class="auth" v-if="!this.$store.getters.isUserLoggedIn">
         <v-btn
@@ -54,8 +60,8 @@ export default {
     onLogout() {
       this.$store.dispatch("logoutUser")
       this.$router.push("/")
-    }
-  }
+    },
+  },
 }
 </script>
 <style scoped>

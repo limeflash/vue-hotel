@@ -3,7 +3,8 @@ import Router from "vue-router"
 import Home from "@/views/Home.vue"
 import Nfound from "@/views/404.vue"
 import Contact from "@/views/Contact.vue"
-import Article from "@/components/Homecard.vue"
+import Article from "@/views/Article.vue"
+import MyArticles from "@/views/MyArticles.vue"
 import Login from "@/components/auth/Login.vue"
 import Registration from "@/components/auth/Registration.vue"
 import CreateRoom from "./components/CreateRoom.vue"
@@ -39,6 +40,12 @@ export default new Router({
       path: "/create",
       name: "CreateRoom",
       component: CreateRoom,
+      beforeEnter: AuthGuard,
+    },
+    {
+      path: "/myarticles",
+      name: "MyArticles",
+      component: MyArticles,
       beforeEnter: AuthGuard,
     },
     {

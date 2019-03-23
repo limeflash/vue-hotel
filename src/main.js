@@ -78,7 +78,7 @@ new Vue({
         }
       })
 
-    // this.$store.dispatch("fetchArticles")
+    this.$store.dispatch("fetchArticles")
   },
   render: h => h(App),
 }).$mount("#app")

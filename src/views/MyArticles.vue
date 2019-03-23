@@ -1,7 +1,7 @@
 <template>
-  <v-container frid-list-lg>
+  <v-container>
     <v-layout justify-center row wrap>
-      <v-flex xs12 md4 sm5 lg3 v-for="article of articles" :key="article.id">
+      <v-flex lg3 md3 ma-1 v-for="article of myArticles" :key="article.id">
         <v-card>
           <v-flex>
             <v-img :src="article.imageSrc" height="200px"></v-img>
@@ -9,7 +9,7 @@
           <v-card-title primary-title>
             <v-flex>
               <div>
-                <h3 class="headline mb-0">{{article.title}}</h3>
+                <h1 class="headline mb-1">{{article.title}}</h1>
                 <div>{{article.description}}</div>
                 <div>{{article.data}}</div>
                 <div>
@@ -19,12 +19,9 @@
             </v-flex>
           </v-card-title>
           <v-card-actions>
-            <v-flex>
-              <v-layout>
-                <v-btn :to="'/article/' + article.id">Open</v-btn>
-                <v-btn :disabled="!$store.getters.isUserLoggedIn" block class="primary">Order</v-btn>
-              </v-layout>
-            </v-flex>
+            <v-layout column>
+              <v-btn :to="'/article/' + article.id">Open</v-btn>
+            </v-layout>
           </v-card-actions>
         </v-card>
       </v-flex>
@@ -33,23 +30,13 @@
 </template>
 
 <script>
-// import * as fb from "firebase"
-// var db = fb.firestore()
-import Misc from "@/mixins/Misc.js"
 export default {
+  name: "MyArticles",
   props: ["id"],
-  mixins: [Misc],
   computed: {
-    articles() {
-      return this.$store.getters.articles
+    myArticles() {
+      return this.$store.getters.myArticles
     },
   },
 }
 </script>
-
-<style scoped>
-.homeCard {
-  background-color: green;
-  width: 100px;
-}
-</style>

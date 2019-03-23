@@ -43,9 +43,9 @@ export default {
       const article = {
         title: this.title,
         description: this.description,
-        data: this.data,
         imageSrc: this.imageSrc,
         id: this.id,
+        data: this.data,
         cost: this.cost,
       }
       this.$store

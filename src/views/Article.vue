@@ -12,7 +12,7 @@
           <v-card-actions>
             <v-spacer></v-spacer>
             <v-btn class="warning" flat>Edit</v-btn>
-            <v-btn class="success">Buy</v-btn>
+            <v-btn :disabled="!$store.getters.isUserLoggedIn" class="success">Order</v-btn>
           </v-card-actions>
         </v-card>
       </v-flex>

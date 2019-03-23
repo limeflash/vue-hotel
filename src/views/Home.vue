@@ -3,11 +3,11 @@
     <v-layout align-center justify-center row>
       <v-flex xs10 md12 lg12 sm10>
         <h1>{{ headText + " " + title1 }}</h1>
-        <v-carousel>
+        <v-carousel color="green">
           <v-carousel-item v-for="article in articles" :key="article.id" :src="article.imageSrc">
-            <div class="car-link">
-              <v-btn class="error" :to="'/article/' + article.id">{{ article.title }}</v-btn>
-            </div>
+            <v-layout align-center justify-center row fill-height>
+              <v-btn large color="green" :to="'/article/' + article.id">{{ article.title }}</v-btn>
+            </v-layout>
           </v-carousel-item>
         </v-carousel>
         <v-flex ma-3>
@@ -30,6 +30,9 @@ export default {
   computed: {
     articles() {
       return this.$store.getters.articles
+    },
+    infos() {
+      return this.$store.getters.infos
     },
   },
 }

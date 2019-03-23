@@ -52,7 +52,6 @@ export default {
           ...NewArticle,
           id: article.key,
         })
-        console.log(article)
         commit("setLoading", false)
       } catch (error) {
         commit("setError", error.message)

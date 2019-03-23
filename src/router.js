@@ -7,8 +7,8 @@ import Article from "@/views/Article.vue"
 import MyArticles from "@/views/MyArticles.vue"
 import Login from "@/components/auth/Login.vue"
 import Registration from "@/components/auth/Registration.vue"
-import CreateRoom from "./components/CreateRoom.vue"
-import AuthGuard from "./router/auth-guard"
+import CreateRoom from "@/components/CreateRoom.vue"
+import AuthGuard from "@/router/auth-guard"
 
 Vue.use(Router)
 
@@ -37,7 +37,7 @@ export default new Router({
         import(/* webpackChunkName: "about" */ "@/views/About.vue"),
     },
     {
-      path: "/create",
+      path: "/create-room",
       name: "CreateRoom",
       component: CreateRoom,
       beforeEnter: AuthGuard,

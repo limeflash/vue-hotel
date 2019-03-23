@@ -14,13 +14,17 @@
         </v-btn>
         <v-btn :color="colorWhite" flat to="/">Home</v-btn>
         <v-btn :color="colorWhite" flat :to="{ name: 'About' }">About</v-btn>
-        <v-btn :color="colorWhite" flat :to="{ name: 'Contact' }">Contact-us</v-btn>
-        <v-btn
-          v-if="$store.getters.isUserLoggedIn"
-          :color="colorWhite"
-          flat
-          :to="{ name: 'CreateRoom' }"
-        >Create form</v-btn>
+        <!-- <v-btn :color="colorWhite" flat :to="{ name: 'Contact' }">Contact-us</v-btn> -->
+        <v-menu v-if="$store.getters.isUserLoggedIn" offset-y>
+          <template v-slot:activator="{ on }">
+            <v-btn flat v-on="on">Create</v-btn>
+          </template>
+          <v-list>
+            <v-list-tile>
+              <v-btn flat :to="{ name: 'CreateRoom' }">Create rooms</v-btn>
+            </v-list-tile>
+          </v-list>
+        </v-menu>
         <v-btn
           v-if="$store.getters.isUserLoggedIn"
           :color="colorWhite"

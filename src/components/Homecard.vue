@@ -10,7 +10,7 @@
             <v-flex>
               <div>
                 <h3 class="headline mb-0">{{article.title}}</h3>
-                <div>{{article.description}}</div>
+                <div>{{article.description.substr(0, 100)}}...</div>
                 <div>{{article.data}}</div>
                 <div>
                   <h1>{{article.cost}}$</h1>
@@ -22,7 +22,7 @@
             <v-flex>
               <v-layout>
                 <v-btn :to="'/article/' + article.id">Open</v-btn>
-                <v-btn :disabled="!$store.getters.isUserLoggedIn" block class="primary">Order</v-btn>
+                <v-btn :disabled="!$store.getters.isUserLoggedIn" block color="green">Order</v-btn>
               </v-layout>
             </v-flex>
           </v-card-actions>

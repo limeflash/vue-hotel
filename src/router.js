@@ -7,7 +7,7 @@ import Article from "@/components/Homecard.vue"
 import Login from "@/components/auth/Login.vue"
 import Registration from "@/components/auth/Registration.vue"
 import CreateRoom from "./components/CreateRoom.vue"
-import AuthGuard from "./store/auth-guard"
+import AuthGuard from "./router/auth-guard"
 
 Vue.use(Router)
 

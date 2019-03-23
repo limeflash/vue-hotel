@@ -16,6 +16,7 @@
             reaquired
           ></v-textarea>
           <v-text-field v-model="data" id="data" label="Date" type="date" reaquired></v-text-field>
+          <v-text-field v-model="cost" id="cost" label="Cost" type="number" reaquired></v-text-field>
           <v-btn :loading="loading" @click="clickone" color="success">Submit data</v-btn>
         </v-form>
       </v-flex>
@@ -31,9 +32,10 @@ export default {
   name: "CreateRoom",
   data() {
     return {
-      title: "",
-      description: "",
+      title: "Room #",
+      description: "This is",
       data: new Date().toISOString().slice(0, 10),
+      cost: 1000,
     }
   },
   methods: {
@@ -44,6 +46,7 @@ export default {
         data: this.data,
         imageSrc: this.imageSrc,
         id: this.id,
+        cost: this.cost,
       }
       this.$store
         .dispatch("createArticle", article)

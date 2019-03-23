@@ -12,6 +12,9 @@
                 <h3 class="headline mb-0">{{article.title}}</h3>
                 <div>{{article.description}}</div>
                 <div>{{article.data}}</div>
+                <div>
+                  <h1>{{article.cost}}$</h1>
+                </div>
               </div>
             </v-flex>
           </v-card-title>

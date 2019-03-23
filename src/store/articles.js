@@ -1,13 +1,22 @@
 import * as fb from "firebase"
 
 class Article {
-  constructor(title, data, description, imageSrc = " ", id = null, ownerId) {
+  constructor(
+    title,
+    data,
+    description,
+    imageSrc = " ",
+    id = null,
+    ownerId,
+    cost
+  ) {
     this.title = title
     this.data = data
     this.description = description
     this.imageSrc = imageSrc
     this.id = id
     this.ownerId = ownerId
+    this.cost = cost
   }
 }
 export default {
@@ -30,7 +39,8 @@ export default {
           payload.description,
           payload.imageSrc,
           payload.id,
-          getters.user.id
+          getters.user.id,
+          payload.cost
         )
         const article = await fb
           .database()

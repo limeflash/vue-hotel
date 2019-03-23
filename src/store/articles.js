@@ -1,3 +1,15 @@
+import * as fb from "firebase"
+
+class Article {
+  constructor(title, data, description, imageSrc = " ", id = null, ownerId) {
+    this.title = title
+    this.data = data
+    this.description = description
+    this.imageSrc = imageSrc
+    this.id = id
+    this.ownerId = ownerId
+  }
+}
 export default {
   state: {
     articles: [],
@@ -8,8 +20,32 @@ export default {
     },
   },
   actions: {
-    createArticle({ commit }, payload) {
-      commit("createArticle", payload)
+    async createArticle({ commit, getters }, payload) {
+      commit("clearError")
+      commit("setLoading", true)
+      try {
+        const NewArticle = new Article(
+          payload.title,
+          payload.data,
+          payload.description,
+          payload.imageSrc,
+          payload.id,
+          getters.user.id
+        )
+        const article = await fb
+          .database()
+          .ref("articles")
+          .push(NewArticle)
+        commit("createArticle", {
+          ...NewArticle,
+          id: "article" + Math.floor(Math.random() * 1000),
+        })
+        commit("setLoading", false)
+      } catch (error) {
+        commit("setError", error.message)
+        commit("setLoading", false)
+        throw error
+      }
     },
   },
   getters: {

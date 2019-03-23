@@ -4,27 +4,12 @@ import Home from "@/views/Home.vue"
 import Nfound from "@/views/404.vue"
 import Contact from "@/views/Contact.vue"
 import Article from "@/components/Homecard.vue"
-// import Login from "./components/Login.vue"
-// import Registration from "./components/Registration.vue"
+import Login from "@/components/auth/Login.vue"
+import Registration from "@/components/auth/Registration.vue"
+import CreateRoom from "./components/CreateRoom.vue"
+import AuthGuard from "./store/auth-guard"
+
 Vue.use(Router)
-
-const Login = resolve => {
-  require.ensure(["./components/auth/Login.vue"], () => {
-    resolve(require("./components/auth/Login.vue"))
-  })
-}
-
-const Registration = resolve => {
-  require.ensure(["./components/auth/Registration.vue"], () => {
-    resolve(require("./components/auth/Registration.vue"))
-  })
-}
-
-const CreateRoom = resolve => {
-  require.ensure(["./components/CreateRoom.vue"], () => {
-    resolve(require("./components/CreateRoom.vue"))
-  })
-}
 
 export default new Router({
   mode: "history",
@@ -54,6 +39,7 @@ export default new Router({
       path: "/create",
       name: "CreateRoom",
       component: CreateRoom,
+      beforeEnter: AuthGuard,
     },
     {
       path: "/contact-us",

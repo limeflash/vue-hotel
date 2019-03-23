@@ -42,15 +42,15 @@
 </template>
 <script>
 // @ is an alias to /src
-import { required, minLength, email } from 'vuelidate/lib/validators'
+import { required, minLength, email } from "vuelidate/lib/validators"
 export default {
-  name: 'Login',
+  name: "Login",
   data() {
     return {
       show1: false,
       show2: false,
-      email: '',
-      password: '',
+      email: "",
+      password: "",
     }
   },
   methods: {
@@ -60,13 +60,18 @@ export default {
         password: this.password,
       }
       this.$store
-        .dispatch('loginUser', user)
+        .dispatch("loginUser", user)
         .then(() => {
-          this.$router.push('/')
+          this.$router.push("/")
         })
         .catch(() => {})
       // console.log("Pass2", this.passwordRepeat)
     },
+  },
+  created() {
+    if (this.$route.query["loginError"]) {
+      this.$store.dispatch("setError", "Please log-in or register")
+    }
   },
   computed: {
     loading() {
@@ -75,15 +80,15 @@ export default {
     emailErrors() {
       const errors = []
       if (!this.$v.email.$dirty) return errors
-      !this.$v.email.email && errors.push('Must be valid e-mail')
-      !this.$v.email.required && errors.push('E-mail is required')
+      !this.$v.email.email && errors.push("Must be valid e-mail")
+      !this.$v.email.required && errors.push("E-mail is required")
       return errors
     },
     passwordErrors() {
       const errors = []
       if (!this.$v.password.$dirty) return errors
-      !this.$v.password.required && errors.push('Password is required')
-      !this.$v.password.minLength && errors.push('Must be at least 8')
+      !this.$v.password.required && errors.push("Password is required")
+      !this.$v.password.minLength && errors.push("Must be at least 8")
       return errors
     },
   },

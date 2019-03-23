@@ -18,7 +18,7 @@
           <v-card-actions>
             <v-flex>
               <v-layout>
-                <v-btn :to="'/home/' + articles.id">Open</v-btn>
+                <v-btn :to="'/home/' + article.id">Open</v-btn>
                 <v-btn :disabled="!$store.getters.isUserLoggedIn" block class="primary">Order</v-btn>
               </v-layout>
             </v-flex>

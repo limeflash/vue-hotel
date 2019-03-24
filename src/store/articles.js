@@ -30,6 +30,9 @@ export default {
     loadArticles(state, payload) {
       state.articles = payload
     },
+    removeArticle(state, payload) {
+      state.articles.push(payload)
+    },
   },
   actions: {
     async createArticle({ commit, getters }, payload) {
@@ -84,6 +87,23 @@ export default {
           )
         })
         commit("loadArticles", resultArticles)
+        commit("setLoading", false)
+      } catch (error) {
+        commit("setError", error.message)
+        commit("setLoading", false)
+        throw error
+      }
+    },
+    async removeArticle({ commit }, payload) {
+      commit("clearError")
+      commit("setLoading", true)
+      try {
+        await fb
+          .database()
+          .ref("articles")
+          .child(payload.id)
+          .remove()
+        commit("removeArticle", { payload })
         commit("setLoading", false)
       } catch (error) {
         commit("setError", error.message)

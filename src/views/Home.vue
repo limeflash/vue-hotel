@@ -31,9 +31,6 @@ export default {
     articles() {
       return this.$store.getters.articles
     },
-    infos() {
-      return this.$store.getters.infos
-    },
   },
 }
 </script>

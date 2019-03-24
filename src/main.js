@@ -77,7 +77,8 @@ new Vue({
           this.$store.dispatch("autoLoginUser", user)
         }
       })
-
+    const db = fb.database()
+    const articlesRef = db.ref("articles")
     this.$store.dispatch("fetchArticles")
   },
   render: h => h(App),

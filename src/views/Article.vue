@@ -11,7 +11,7 @@
           </v-card-text>
           <v-card-actions>
             <v-spacer></v-spacer>
-            <v-btn class="warning" flat>Edit</v-btn>
+            <v-btn @click="clickone" class="error" flat>Remove</v-btn>
             <v-btn :disabled="!$store.getters.isUserLoggedIn" class="success">Order</v-btn>
           </v-card-actions>
         </v-card>
@@ -21,12 +21,32 @@
 </template>
 
 <script>
+// import * as fb from "firebase"
+
 export default {
   props: ["id"],
   computed: {
     article() {
       const id = this.id
       return this.$store.getters.articlesById(id)
+    },
+  },
+  methods: {
+    clickone() {
+      const article = {
+        title: this.title,
+        description: this.description,
+        imageSrc: this.imageSrc,
+        id: this.id,
+        data: this.data,
+        cost: this.cost,
+      }
+      this.$store
+        .dispatch("removeArticle", article)
+        .then(() => {
+          this.$router.push("/")
+        })
+        .catch(() => {})
     },
   },
 }

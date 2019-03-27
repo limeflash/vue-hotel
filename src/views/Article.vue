@@ -11,7 +11,12 @@
           </v-card-text>
           <v-card-actions>
             <v-spacer></v-spacer>
-            <v-btn @click="clickone" class="error" flat>Remove</v-btn>
+            <v-btn
+              v-if="$store.getters.isUserLoggedIn && $store.getters.user.id == 'GVULyMdrfqUndt7bhZ11VVis3Cm1'"
+              @click="clickone"
+              class="error"
+              flat
+            >Remove</v-btn>
             <v-btn :disabled="!$store.getters.isUserLoggedIn" class="success">Order</v-btn>
           </v-card-actions>
         </v-card>

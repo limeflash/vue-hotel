@@ -9,6 +9,7 @@ import Login from "@/components/auth/Login.vue"
 import Registration from "@/components/auth/Registration.vue"
 import CreateRoom from "@/components/CreateRoom.vue"
 import AuthGuard from "@/router/auth-guard"
+import AdminGuard from "@/router/admin-guard"
 
 Vue.use(Router)
 
@@ -41,6 +42,7 @@ export default new Router({
       name: "CreateRoom",
       component: CreateRoom,
       beforeEnter: AuthGuard,
+      beforeEnter: AdminGuard,
     },
     {
       path: "/myarticles",

@@ -23,7 +23,7 @@
         >Our hotel rooms</v-btn>
         <v-btn
           :color="colorWhite"
-          v-if="$store.getters.isUserLoggedIn"
+          v-if="$store.getters.isUserLoggedIn && $store.getters.user.id == 'GVULyMdrfqUndt7bhZ11VVis3Cm1'"
           flat
           :to="{ name: 'CreateRoom' }"
         >Create rooms</v-btn>
